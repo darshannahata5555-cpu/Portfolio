@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CS Student — Portfolio</title>
+  <!-- Simple CSS kept inside the file for easy copying and learning -->
+  <style>
+    /* Basic reset */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; line-height: 1.6; color: #222; background: #f7f8fa; }
+
+    /* Page container */
+    .container { max-width: 900px; margin: 32px auto; padding: 24px; background: #fff; border-radius: 10px; box-shadow: 0 6px 20px rgba(20,20,40,0.06); }
+
+    /* Header */
+    header { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+    .avatar { width: 84px; height: 84px; border-radius: 12px; background: linear-gradient(135deg,#647eff,#9be7ff); display: flex; align-items:center; justify-content:center; color:#fff; font-weight:700; font-size:28px; }
+    h1 { font-size: 24px; }
+    p.lead { color: #555; margin-top: 6px; }
+
+    /* Grid for main content */
+    .grid { display: grid; grid-template-columns: 1fr 320px; gap: 20px; }
+
+    /* Left column (main) */
+    .card { background: #fff; padding: 16px; border-radius: 8px; border: 1px solid #eef0f6; }
+    section + section { margin-top: 14px; }
+    h2 { font-size: 18px; margin-bottom: 10px; }
+
+    /* Skills list */
+    .skills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .skill { background: #eef6ff; color: #0b57d0; padding: 6px 10px; border-radius: 8px; font-size: 14px; }
+
+    /* Projects */
+    .project { border-left: 3px solid #e6eefc; padding: 12px 12px; margin-bottom: 10px; border-radius: 6px; background: linear-gradient(180deg,#ffffff, #fbfdff); }
+    .project h3 { margin-bottom: 6px; font-size: 16px; }
+    .project p { color: #444; font-size: 14px; }
+    .project a { display: inline-block; margin-top: 8px; text-decoration: none; font-weight:600; }
+
+    /* Right column (sidebar) */
+    .sidebar h3 { font-size: 16px; }
+    .info-list { list-style: none; margin-top: 8px; }
+    .info-list li { margin-bottom: 8px; color:#444; }
+
+    /* Contact button */
+    .btn { display: inline-block; padding: 10px 14px; border-radius: 8px; background: #0b57d0; color: #fff; text-decoration: none; font-weight: 600; }
+
+    /* Footer */
+    footer { text-align: center; margin-top: 18px; color: #6b7280; font-size: 13px; }
+
+    /* Responsive: stack columns on small screens */
+    @media (max-width: 880px) {
+      .grid { grid-template-columns: 1fr; }
+      .avatar { width: 64px; height: 64px; font-size: 22px; }
+      .container { margin: 16px; }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header with name and short intro -->
+    <header>
+      <div class="avatar">DS</div>
+      <div>
+        <h1>Darshan Nahata</h1>
+        <p class="lead">Computer Science student passionate about web UI/UX, with interests in AI-ML, and a creative flair for design tools like Figma. </p>
+      </div>
+    </header>
+
+    <!-- Main grid: left = main content, right = sidebar -->
+    <div class="grid">
+      <!-- Left column -->
+      <main>
+        <section class="card">
+          <h2>About Me</h2>
+          <p style="margin-top:8px; color:#444;">I’m <strong>Darshan Nahata</strong> from Pune, Maharashtra, currently studying at <strong>Scaler School of Technology</strong> and pursuing an Online <strong>Data Science degree from IIT Madras</strong>.
+I’m passionate about entrepreneurship and enjoy exploring how technology and innovative ideas can create real-world impact.</p>
+        </section>
+
+        <section class="card">
+          <h2>Skills</h2>
+          <div class="skills" style="margin-top:8px;">
+            <!-- Add or remove skills as needed -->
+            <span class="skill">HTML Basics</span>
+            <span class="skill">CSS Basics</span>
+            <span class="skill">JavaScript Basics</span>
+           
+            <span class="skill">Canva</span>
+            
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Projects</h2>
+
+          <!-- Project 1 -->
+          <article class="project">
+            <h3>Portfolio Website</h3>
+            <p>A simple responsive portfolio built with HTML &amp; CSS — demonstrates layout, responsive design, and accessibility basics.</p>
+            <a href="#" aria-label="View project"> Portfolio →</a>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project">
+            <h3>DayDream Game Jam</h3>
+            <h5>VibeCoded a Game useing Lovable</h5>
+            <p>Bridge & War – Strategic Survival is a tactical survival game where villagers must unite to build bridges across dangerous terrain while preparing for inevitable wars. Players select villagers with unique skills, combine synergies, and manage limited resources to earn bridge points. Every choice matters—whether to strengthen your defenses, expand your reach, or risk everything in battle. Strategy, survival, and smart alliances decide who thrives and who falls.</p>
+            <a href="https://bridge-war-first-aid.lovable.app/">Play Game →</a>
+          </article>
+
+          <!-- Placeholder for more projects -->
+
+          </article>
+        </section>
+
+        <section class="card">
+          <h2>Education</h2>
+          <p style="margin-top:8px; color:#444;"><strong>Scaler School of Technology</strong> — B.Tech in Computer Science 
+Bengaluru, Karnataka<br>
+
+Focused on building strong foundations in computer science, software development, and problem-solving through an industry-driven curriculum.
+<br>
+
+<strong>IIT Madras</strong> — B.Sc. in Data Science 
+Chennai, Tamil Nadu
+Pursuing an online degree in Data Science with a focus on statistics, programming, and data-driven decision-making.</p>
+        </section>
+      </main>
+
+      <!-- Right column (sidebar) -->
+      <aside class="sidebar card">
+        <h3>Contact</h3>
+        <ul class="info-list">
+          <li>Email: <a href="mailto:darshan@example.com">darshannahata5555@gmail.com</a></li>
+          <li>LinkedIn: <a href="https://www.linkedin.com/in/darshan-n-8b9689319?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">Darshan N</a></li>
+          <li>GitHub: <a href="https://github.com/darshannahata5555-cpu">darshannahata5555-cpu</a></li>
+        </ul>
+
+        <div style="margin-top:12px;">
+          <!-- mailto opens the user's default email client -->
+          <a class="btn" href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=DmwnWrRlRQchzqwpbmcvfKNVvFJFhrpBMqthcnZXGvqlDvhLGTBlrtDCLTRflsgppGghCsfJRLpL">Email Me</a>
+        </div>
+
+        <section style="margin-top:16px;">
+          <h3>Honors & Activities</h3>
+          <ul class="info-list">
+            <li><strong>E-Cell Member</strong></li>
+            <li>1st Place — 1000/- Hustel Challange</li>
+            <li><strong>Yugaantar Spons & Creatives Member</strong></li>
+            
+          </ul>
+        </section>
+      </aside>
+    </div>
+
+    <footer>
+      <p>Made by Darshan Nahata • © 2025
+</p>
+    </footer>
+  </div>
+</body>
+</html>
