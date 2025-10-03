@@ -1,355 +1,401 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Portfolio</title>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darshan Nahata - Portfolio</title>
     <style>
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #1c1c1c;
-            background: linear-gradient(135deg, #e0f2fe, #ede9fe, #fef9f9);
-            background-attachment: fixed;
-            min-height: 100vh;
+            color: #2d3748;
+            background: #f7fafc;
+            zoom:400%;;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
             display: flex;
             justify-content: center;
-            align-items: flex-start;
+            gap: 40px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #2d3748;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #667eea;
         }
 
         .container {
-            max-width: 900px;
-            margin: 32px auto;
-            padding: 28px;
-            background:linear-gradient(135deg, #2563eb, #9333ea);
-            border-radius: 16px;
-            box-shadow: 0 10px 32px rgba(0, 0, 0, 0.12);
-            border: 1px solid rgba(229, 231, 235, 0.6);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 20px 50px;
         }
 
-        
-        header {
+        .hero {
+            min-height: 20vh;
             display: flex;
             align-items: center;
-            gap: 18px;
-            margin-bottom: 20px;
+            justify-content: space-between;
+            gap: 60px;
+            margin-bottom: 100px;
         }
 
-        .avatar {
-            width: 84px;
-            height: 84px;
-            border-radius: 14px;
-            background: linear-gradient(135deg, #4f46e5, #06b6d4);
-            display: flex;
+        .hero-content {
+            flex: 1;
+        }
 
+        .hello {
+            font-size: 2em;
+            color: #718096;
+            margin-bottom: 10px;
+        }
+
+        .name {
+            font-size: 4em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-description {
+            font-size: 1.2em;
+            color: #4a5568;
+            max-width: 500px;
+            line-height: 1.8;
+        }
+
+        .highlight-text {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .location-tag {
+            display: inline-block;
+            background: #e6fffa;
+            color: #234e52;
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin-top: 20px;
+            font-size: 0.95em;
+        }
+
+        .hero-visual {
+            flex: 1;
+            display: flex;
             align-items: center;
             justify-content: center;
-            color: #ffffffe3;
-            font-weight: 700;
-            font-size: 28px;
-            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35);
         }
 
-        h1 {
-            font-size: 26px;
-            color: #ffffff;
+        .skills-circle {
+            position: relative;
+            width: 400px;
+            height: 400px;
         }
 
-        p.lead {
-            color: #ffffff;
-            margin-top: 6px;
+        .skills-title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+            z-index: 1;
         }
 
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 320px;
-            gap: 20px;
-        }
-
-        
-        .card {
-            background: #cee6ff;
-            padding: 18px;
-            border-radius: 12px;
-            border: 1px solid #e5e7eb;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 18px rgba(79, 70, 229, 0.2);
-        }
-
-        section+section {
-            margin-top: 16px;
-        }
-
-        h2 {
-            font-size: 19px;
-            margin-bottom: 10px;
-            color: #1e293b;
-            border-left: 4px solid #4f46e5;
-            padding-left: 10px;
-        }
-
-       
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        .skill {
-            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
-            color: #1e40af;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 14px;
+        .skill-tag {
+            position: absolute;
+            background: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             font-weight: 500;
-            box-shadow: 0 2px 6px rgba(59, 130, 246, 0.2);
+            animation: float 3s ease-in-out infinite;
         }
 
-        
-        .project {
-            border-left: 4px solid #3b82f6;
-            padding: 12px;
-            margin-bottom: 12px;
-            border-radius: 10px;
-            background:linear-gradient(135deg, #a6bdf3, #d7c4e9);
-            transition: background 0.3s, transform 0.2s;
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
 
-        .project:hover {
-            background: linear-gradient(180deg, #eef2ff, #ffffff);
-            transform: translateX(3px);
+        .skill-tag:nth-child(2) { top: 10%; left: 20%; color: #667eea; animation-delay: 0s; }
+        .skill-tag:nth-child(3) { top: 15%; right: 15%; color: #f56565; animation-delay: 0.5s; }
+        .skill-tag:nth-child(4) { top: 40%; left: 5%; color: #48bb78; animation-delay: 1s; }
+        .skill-tag:nth-child(5) { top: 45%; right: 0%; color: #ed8936; animation-delay: 1.5s; }
+        .skill-tag:nth-child(6) { bottom: 20%; left: 15%; color: #9f7aea; animation-delay: 2s; }
+        .skill-tag:nth-child(7) { bottom: 15%; right: 20%; color: #38b2ac; animation-delay: 2.5s; }
+        .skill-tag:nth-child(8) { bottom: 40%; right: 10%; color: #805ad5; animation-delay: 3s; }
+
+        section {
+            margin-bottom: 100px;
         }
 
-        .project h3 {
-            margin-bottom: 6px;
-            font-size: 16px;
-            color: #1e293b;
+        .section-title {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #2d3748;
+            margin-bottom: 50px;
+            text-align: center;
         }
 
-        .project p {
-            color: #374151;
-            font-size: 14px;
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
 
-        .project a {
-            display: inline-block;
-            margin-top: 8px;
-            text-decoration: none;
+        .education-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid #667eea;
+        }
+
+        .education-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .education-card h3 {
+            font-size: 1.5em;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .education-card .institution {
             font-weight: 600;
-            color: #2563eb;
-            transition: color 0.2s;
+            color: #2d3748;
+            margin-bottom: 5px;
         }
 
-        .project a:hover {
-            color: #1e40af;
+        .education-card .status {
+            color: #718096;
+            font-size: 0.9em;
         }
 
-        .sidebar h3 {
-            font-size: 17px;
-            color: #334155;
-            margin-bottom: 6px;
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
 
-        .info-list {
-            list-style: none;
-            margin-top: 8px;
+        .project-card {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
         }
 
-        .info-list li {
-            margin-bottom: 8px;
-            color: #444;
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
         }
 
-        .info-list a {
-            color: #2563eb;
-            text-decoration: none;
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
         }
 
-        .info-list a:hover {
-            text-decoration: underline;
+        .project-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
         }
 
-    
-        .btn {
+        .project-card h3 {
+            font-size: 1.4em;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+
+        .project-card p {
+            color: #4a5568;
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        .project-highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
             display: inline-block;
-            padding: 10px 16px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, #2563eb, #9333ea);
-            color: #fff;
-            text-decoration: none;
+            margin-top: 10px;
             font-weight: 600;
-            transition: background 0.3s, transform 0.2s;
-            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.35);
         }
 
-        .btn:hover {
-            background: linear-gradient(135deg, #1d4ed8, #7e22ce);
-            transform: translateY(-2px);
+        .selfmade {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 10px;
+            font-weight: 600;
+            border: #e6fffa;
         }
 
-       
         footer {
             text-align: center;
-            margin-top: 20px;
-            color: #6b7280;
-            font-size: 13px;
+            padding: 50px 20px;
+            background: white;
+            margin-top: 100px;
+            border-top: 1px solid #e2e8f0;
         }
 
-        .bottom{
-            color: #ffffff;
+        footer p {
+            color: #718096;
+            margin: 5px 0;
         }
-       
-        @media (max-width: 880px) {
-            .grid {
-                grid-template-columns: 1fr;
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
             }
 
-            .avatar {
-                width: 64px;
-                height: 64px;
-                font-size: 22px;
+            .name {
+                font-size: 2.5em;
             }
 
-            .container {
-                margin: 16px;
+            .skills-circle {
+                width: 300px;
+                height: 300px;
+            }
+
+            .skills-title {
+                font-size: 3em;
+            }
+
+            nav ul {
+                gap: 20px;
+                font-size: 0.9em;
             }
         }
     </style>
 </head>
-
 <body>
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#projects">Work</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
     <div class="container">
-
-        <header>
-            <div class="avatar">DS</div>
-            <div>
-                <h1>Darshan Nahata</h1>
-                <p class="lead">Computer Science student passionate about web UI/UX, with interests in AI-ML, and a
-                    creative flair for design tools like Figma. </p>
+        <section class="hero" id="about">
+            <div class="hero-content">
+                <div class="hello">Hello.</div>
+                <h1 class="name">I am Darshan Nahata.</h1>
+                <p class="hero-description">
+                    A <span class="highlight-text">Computer Science student</span> passionate about technology, design, and entrepreneurship. Currently building my skills in development and data science while creating impactful projects.
+                </p>
+                <span class="location-tag">📍 Pune, Maharashtra</span>
             </div>
-        </header>
+            
+            <div class="hero-visual">
+                <div class="skills-circle">
+                    <div class="skills-title">SKILLS</div>
+                    <div class="skill-tag">HTML</div>
+                    <div class="skill-tag">CSS</div>
+                    <div class="skill-tag">JavaScript</div>
+                    <div class="skill-tag">Java</div>
+                    <div class="skill-tag">Design</div>
+                    <div class="skill-tag">Canva</div>
+                  
+                </div>
+            </div>
+        </section>
 
+        <section id="education">
+            <h2 class="section-title">Education</h2>
+            <div class="education-grid">
+                <div class="education-card">
+                    <h3>Computer Science</h3>
+                    <p class="institution">Scaler School of Technology</p>
+                    <p class="status">Currently Pursuing</p>
+                </div>
+                <div class="education-card">
+                    <h3>Data Science</h3>
+                    <p class="institution">Indian Institute of Technology (IIT) Madras</p>
+                    <p class="status">Online Program - Currently Pursuing</p>
+                </div>
+            </div>
+        </section>
 
-        <div class="grid">
-
-            <main>
-                <section class="card">
-                    <h2>About Me</h2>
-                    <p style="margin-top:8px; color:#444;">I’m <strong>Darshan Nahata</strong> from Pune, Maharashtra,
-                        currently studying at <strong>Scaler School of Technology</strong> and pursuing an Online
-                        <strong>Data Science degree from IIT Madras</strong>.
-                        I’m passionate about entrepreneurship and enjoy exploring how technology and innovative ideas
-                        can create real-world impact.
-                    </p>
-                </section>
-
-                <section class="card">
-                    <h2>Skills</h2>
-                    <div class="skills" style="margin-top:8px;">
-                        <span class="skill">HTML Basics</span>
-                        <span class="skill">CSS Basics</span>
-                        <span class="skill">JavaScript Basics</span>
-
-                        <span class="skill">Canva</span>
-
-                    </div>
-                </section>
-
-                <section class="card">
-                    <h2>Projects</h2>
-
-
-                    <article class="project">
-                        <h3>Portfolio Website</h3>
-                        <p>A simple responsive portfolio built with HTML &amp; CSS — demonstrates layout, responsive
-                            design, and accessibility basics.</p>
-                        <a href="https://github.com/darshannahata5555-cpu/Portfolio/blob/main/portfolio.html"
-                            aria-label="View project"> Portfolio →</a>
-                    </article>
-
-
-                    <article class="project">
-                        <h3>DayDream Game Jam</h3>
-                        <h5>VibeCoded a Game useing Lovable</h5>
-                        <p>Bridge & War – Strategic Survival is a tactical survival game where villagers must unite to
-                            build bridges across dangerous terrain while preparing for inevitable wars. Players select
-                            villagers with unique skills, combine synergies, and manage limited resources to earn bridge
-                            points. Every choice matters—whether to strengthen your defenses, expand your reach, or risk
-                            everything in battle. Strategy, survival, and smart alliances decide who
-                            thrives and who falls.</p>
-                        <a href="https://bridge-war-first-aid.lovable.app/">Play Game →</a>
-                    </article>
-
-
-
-                    </article>
-                </section>
-
-                <section class="card">
-                    <h2>Education</h2>
-                    <p style="margin-top:8px; color:#444;"><strong>Scaler School of Technology</strong> — B.Tech in
-                        Computer Science
-                        Bengaluru, Karnataka<br>
-
-                        Focused on building strong foundations in computer science, software development, and
-                        problem-solving through an industry-driven curriculum.
-                        <br>
-
-                        <strong>IIT Madras</strong> — B.Sc. in Data Science
-                        Chennai, Tamil Nadu
-                        Pursuing an online degree in Data Science with a focus on statistics, programming, and
-                        data-driven decision-making.
-                    </p>
-                </section>
-            </main>
-
-            <aside class="sidebar card">
-                <h3>Contact</h3>
-                <ul class="info-list">
-                    <li>Email: <a href="mailto:darshan@example.com">darshannahata5555@gmail.com</a></li>
-                    <li>LinkedIn: <a
-                            href="https://www.linkedin.com/in/darshan-n-8b9689319?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">Darshan
-                            N</a></li>
-                    <li>GitHub: <a href="https://github.com/darshannahata5555-cpu">darshannahata5555-cpu</a></li>
-                </ul>
-
-                <div style="margin-top:12px;">
-
-                    <a class="btn"
-                        href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=DmwnWrRlRQchzqwpbmcvfKNVvFJFhrpBMqthcnZXGvqlDvhLGTBlrtDCLTRflsgppGghCsfJRLpL">Email
-                        Me</a>
+        <section id="projects">
+            <h2 class="section-title">Projects & Achievements</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-icon">🎮</div>
+                    <h3>Game Development</h3>
+                    <p>Created an engaging game as part of the Daydream Game Jam, showcasing creativity and technical skills in game development.</p>
                 </div>
 
-                <section style="margin-top:16px;">
-                    <h3>Honors & Activities</h3>
-                    <ul class="info-list">
-                        <li><strong>E-Cell Member</strong></li>
-                        <li>1st Place — 1000/- Hustel Challange</li>
-                        <li><strong>Yugaantar Spons & Creatives Member</strong></li>
+                <div class="project-card">
+                    <div class="project-icon">🏆</div>
+                    <h3>1000 Rupee Hustle Challenge</h3>
+                    <p>Led a team to secure first place in our college E-Cell's challenge by generating impressive profit, demonstrating strong entrepreneurial skills.</p>
+                    <span class="project-highlight">₹26,000 Profit in 4-5 Days!</span>
+                </div>
 
-                    </ul>
-                </section>
-            </aside>
-        </div>
+                <div class="project-card">
+                    <div class="project-icon">🎨</div>
+                    <h3>Yugaantar College Fest</h3>
+                    <p><strong>Official Sponsorship & Creatives Team Member</strong></p>
+                    <p>Contributing to one of the biggest college festivals by managing sponsorships and creating compelling visual content.</p>
+                </div>
+            </div>
+        </section>
 
-        <footer>
-            <p class = "bottom">Made by Darshan Nahata • © 2025
+        <footer id="contact">
+            <p style="font-size: 1.2em; font-weight: 600; color: #2d3748;">Darshan Nahata
+                <br>Mail - darshannahata5555@gmail.com
             </p>
+            <a href="https://www.linkedin.com/in/darshan-n-8b9689319?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><button class="selfmade">LinkedIn</button></a>
+            <a href="https://github.com/darshannahata5555-cpu"><button class="selfmade" href="">GitHub</button></a>
+            <button class="selfmade">Instagram</button>
+            
+            
+
+
+            <p>Designed with passion and creativity ✨</p>
+            
         </footer>
     </div>
 </body>
-
 </html>
